@@ -112,10 +112,8 @@ public class MohBillingCohortBuilderFormController extends
 			else {
 				mav.addObject("consommations", cons);
 			}
-			cons.get(0).getPatientBill().getStatus();
 
 		}
-		mav.addObject("insurances", InsuranceUtil.getAllInsurances());
 		mav.addObject("insurances", InsuranceUtil.getAllInsurances());
 		mav.addObject("thirdParties", InsurancePolicyUtil.getAllThirdParties());
 		mav.addObject("departments", DepartementUtil.getAllHospitalDepartements());
