@@ -1446,7 +1446,7 @@ public class HibernateBillingDAO implements BillingDAO {
         CallableStatement callableStatement = connection.prepareCall("{CALL sp_mamba_fact_insurance_report_query(?, ?, ?)}");
         callableStatement.setInt(1, insuranceIdentifier);
         callableStatement.setDate(2, new java.sql.Date(startDate.getTime()));
-        callableStatement.setDate(3, new java.sql.Date(endDate.getTime()));
+        callableStatement.setTimestamp(3, new java.sql.Timestamp(endDate.getTime()));
         return callableStatement;
     }
 
