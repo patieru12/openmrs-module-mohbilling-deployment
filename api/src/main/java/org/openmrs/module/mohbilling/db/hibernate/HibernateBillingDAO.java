@@ -1473,16 +1473,16 @@ public class HibernateBillingDAO implements BillingDAO {
             reportItem.setGlobalBillIdentifier(resultSet.getString(16));
 
             // Services
-            reportItem.setMedicament(getDouble(resultSet, 17));
-            reportItem.setConsultation(getDouble(resultSet, 18));
-            reportItem.setHospitalisation(getDouble(resultSet, 19));
-            reportItem.setLaboratoire(getDouble(resultSet, 20));
-            reportItem.setFormaliteAdministratives(getDouble(resultSet, 21));
-            reportItem.setAmbulance(getDouble(resultSet, 22));
-            reportItem.setConsommables(getDouble(resultSet, 23));
-            reportItem.setOxygenotherapie(getDouble(resultSet, 24));
-            reportItem.setImaging(getDouble(resultSet, 25));
-            reportItem.setProced(getDouble(resultSet, 26));
+            reportItem.setMedicament(getDouble(resultSet, "MEDICAMENTS"));
+            reportItem.setConsultation(getDouble(resultSet, "CONSULTATION"));
+            reportItem.setHospitalisation(getDouble(resultSet, "HOSPITALISATION"));
+            reportItem.setLaboratoire(getDouble(resultSet, "LABORATOIRE"));
+            reportItem.setFormaliteAdministratives(getDouble(resultSet, "FORMALITES ADMINISTRATIVES"));
+            reportItem.setAmbulance(getDouble(resultSet, "AMBULANCE"));
+            reportItem.setConsommables(getDouble(resultSet, "CONSOMMABLES"));
+            reportItem.setOxygenotherapie(getDouble(resultSet, "OXYGENOTHERAPIE"));
+            reportItem.setImaging(getDouble(resultSet, "IMAGING"));
+            reportItem.setProced(getDouble(resultSet, "PROCED."));
 
             calculateAndSetTotals(reportItem, insuranceIdentifier);
             addItemToReport(reportItem, report, insuranceIdentifier);
@@ -1500,6 +1500,10 @@ public class HibernateBillingDAO implements BillingDAO {
             log.error("Error parsing date from ResultSet", e);
             return null;
         }
+    }
+
+    private Double getDouble(ResultSet resultSet, String columnLabel) throws SQLException {
+        return resultSet.getObject(columnLabel) != null ? resultSet.getDouble(columnLabel) : 0;
     }
 
     private Double getDouble(ResultSet resultSet, int columnIndex) throws SQLException {

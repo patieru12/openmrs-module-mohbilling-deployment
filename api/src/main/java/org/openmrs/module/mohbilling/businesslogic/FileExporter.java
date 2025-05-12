@@ -532,10 +532,10 @@ public class FileExporter {
         }
 
 
-		/*String itemName;
+		String itemName;
 		BigDecimal unitPrice,paidQty,itemPaidCost=new BigDecimal(0.0);
 		BigDecimal totalToBePaidByPatient = new BigDecimal(0.0);
-		*/
+		
         BigDecimal totalPaid = new BigDecimal(0.0);
 
         List<PaidServiceBill> paidItems = BillPaymentUtil.getPaidItemsByBillPayment(payment);
@@ -544,7 +544,7 @@ public class FileExporter {
             paidItems = BillPaymentUtil.getOldPayments(payment);
         }
 
-		/*for (PaidServiceBill service: paidItems) {
+		for (PaidServiceBill service: paidItems) {
 			number++;
 
 			BigDecimal itemCost = service.getBillItem().getQuantity().multiply(service.getBillItem().getUnitPrice().multiply(patientRate).divide(new BigDecimal(100)));
@@ -565,7 +565,7 @@ public class FileExporter {
 			cell.setBorder(Rectangle.NO_BORDER);
 			if(number%2!=0)tableRight.addCell(cell);else tableLeft.addCell(cell);
 		}
-		*/
+		
         PdfPCell c = new PdfPCell(tableRight);
         c.setBorder(Rectangle.NO_BORDER);
         table.addCell(c);
